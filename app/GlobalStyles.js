@@ -493,7 +493,7 @@ export const GlobalStyles = StyleSheet.create(
       fontFamily: "system-ui",
       color:"#222",
       position: 'absolute',
-      marginTop: '3em',
+      marginTop: '2em',
       whiteSpace: 'nowrap',
     }
   }

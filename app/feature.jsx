@@ -3,6 +3,7 @@ import { Text, View, SafeAreaView, Pressable  } from "react-native";
 import { Canvas } from "@benjeau/react-native-draw";
 import { GlobalStyles } from "./GlobalStyles";
 import LessonButton from '../components/LessonButton.tsx'
+import { Screen } from '@react-navigation/native';
 
 import Design_ੳ_1 from "../constants/data/Design_ੳ_1.tsx";
 import { coord_ੳ_1 } from "../constants/data/coord_ੳ_1.js";
@@ -295,7 +296,107 @@ export default function Feature() {
 		ਵ: coord_ਵ_34,
 		ੜ: coord_ੜ_35,
 	};
-    
+  const lessonSections = [
+		{
+			stage: 1,
+			section: 1,
+			renderLesson: function() {
+				return (<><View style={{ zIndex: 2, position: "absolute" }}>
+					<SVGItem
+						visible={true}
+						firstPathAssist={FPA}
+						secondPathAssist={SPA}
+						thirdPathAssist={TPA}
+						fourthPathAssist={FoPA}
+					/>
+				</View>
+				<Pressable
+					style={{ backgroundColor: "transparent", zIndex: 5 }}
+					onPressIn={() => pauseAllAnimation()}
+					onPressOut={() => handleGetPath()}
+				>
+				<Canvas
+					ref={canvasRef}
+					height={100}
+					width={100}
+					style={{
+						backgroundColor: "transparent",
+						position: "relative",
+						zIndex: 3,
+					}}
+					zIndex={100}
+          enabled={ableToDraw}
+				/>
+				</Pressable></>)
+			},
+		},
+		{
+			stage: 1,
+			section: 2,
+			renderLesson: function() {
+				return (<><View style={{ zIndex: 2, position: "absolute" }}>
+					<SVGItem
+						visible={true}
+						firstPathAssist={FPA}
+						secondPathAssist={SPA}
+						thirdPathAssist={TPA}
+						fourthPathAssist={FoPA}
+					/>
+				</View>
+				<Pressable
+					style={{ backgroundColor: "transparent", zIndex: 5 }}
+					onPressIn={() => pauseAllAnimation()}
+					onPressOut={() => handleGetPath()}
+				>
+				<Canvas
+					ref={canvasRef}
+					height={100}
+					width={100}
+					style={{
+						backgroundColor: "transparent",
+						position: "relative",
+						zIndex: 3,
+					}}
+					zIndex={100}
+          enabled={ableToDraw}
+				/>
+				</Pressable></>)
+			},
+		},
+		{
+			stage: 1,
+			section: 3,
+			renderLesson: function() {
+				return (<><View style={{ zIndex: 2, position: "absolute" }}>
+					<SVGItem
+						visible={true}
+						firstPathAssist={FPA}
+						secondPathAssist={SPA}
+						thirdPathAssist={TPA}
+						fourthPathAssist={FoPA}
+					/>
+				</View>
+				<Pressable
+					style={{ backgroundColor: "transparent", zIndex: 5 }}
+					onPressIn={() => pauseAllAnimation()}
+					onPressOut={() => handleGetPath()}
+				>
+				<Canvas
+					ref={canvasRef}
+					height={100}
+					width={100}
+					style={{
+						backgroundColor: "transparent",
+						position: "relative",
+						zIndex: 3,
+					}}
+					zIndex={100}
+          enabled={ableToDraw}
+				/>
+				</Pressable></>)
+			},
+		}
+	]
 	const canvasRef = useRef(null);
 
 	const params = useLocalSearchParams();
@@ -328,7 +429,12 @@ export default function Feature() {
 		});
 		return points;
 	}
-
+	function resetCanvas() {
+		setGlobalCounter(0);
+		canvasRef.current.clear();
+		setCompleteButton(false)
+		setCurrLesson(currLesson+1);
+	}
 	function compareSvgPaths(path1, path2) {
 		const commands1 = parseSvgPath(path1);
 		const commands2 = parseSvgPath(path2);
@@ -363,15 +469,24 @@ export default function Feature() {
 	}
 
 	const [globalCounter, setGlobalCounter] = React.useState(0);
-
+	const [currSection, setCurrSection] = React.useState(0); 
 	const [status, setStatus] = React.useState("");
-
+	const [currLesson, setCurrLesson] = React.useState(0);
+	const sections = [
+		{
+			 
+		},
+		{
+			
+		}
+	]
     const [ableToDraw, setAbleToDraw] = React.useState(true)
     
     const [completeButton, setCompleteButton] = React.useState(false)
 
     const itemLetter_Coord = coordMap[itemLetter];
 
+		//manages pen and activate
 	const handleGetPath = () => {
         console.log("itemLetter_Coord:", itemLetter_Coord);
         console.log("Type of itemLetter_Coord:", typeof itemLetter_Coord);
@@ -446,13 +561,13 @@ export default function Feature() {
 		setFoPA(false);
 	};
 	const playPronunciationAudio = (audioPath) => {
-		new Audio(audioPath).play();
+		//JUMP: delete comment to unmute
+		//new Audio(audioPath).play();
 	}
 
     const router = useRouter();
 
     const handleCollectEXP = async(amount) => {
-        console.log("@handleCollectEXP")
         try {
             const docRef = doc(db, "users", currentUser.uid);
             const docSnap = await getDoc(docRef);
@@ -557,41 +672,16 @@ export default function Feature() {
 					height: "100%",
 				}}
 			>
-				<View style={{ zIndex: 2, position: "absolute" }}>
-					<SVGItem
-						visible={true}
-						firstPathAssist={FPA}
-						secondPathAssist={SPA}
-						thirdPathAssist={TPA}
-						fourthPathAssist={FoPA}
-					/>
-					<View style={{
+				{lessonSections[currLesson]&&lessonSections[currLesson].renderLesson()}
+
+
+				<View style={{
 						display:'flex',
 						alignItems: 'center'
 					}}>
 					<Text style={GlobalStyles.romanizationText}>Romanization Here</Text>
 					</View>
 				</View>
-				<Pressable
-					style={{ backgroundColor: "transparent", zIndex: 5 }}
-					onPressIn={() => pauseAllAnimation()}
-					onPressOut={() => handleGetPath()}
-				>
-					<Canvas
-						ref={canvasRef}
-						height={100}
-						width={100}
-						style={{
-							backgroundColor: "transparent",
-							position: "relative",
-							zIndex: 3,
-						}}
-						zIndex={100}
-                        enabled={ableToDraw}
-					/>
-				</Pressable>
-			</View>
-			
 			<View style={GlobalStyles.audioIconDiv} onClick={()=>{
 				playPronunciationAudio(currentAudio)
 
@@ -600,9 +690,15 @@ export default function Feature() {
 					<path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
 			</svg>				
 			</View>
-			{/* {globalCounter >= ਕ.length ? <></> : <Button title="Get Path" onPress={handleGetPath} />} */}
-            {completeButton && <LessonButton text="Collect 10 EXP" onPress={() => handleCollectEXP(10)}/>}
-            
+
+        {completeButton && (<LessonButton text={currLesson == lessonSections.length-1?"Collect 10 EXP":"Continue"} onPress={() => {
+					if (currLesson == lessonSections.length-1) {
+						handleCollectEXP(10)
+					}
+					else if (currLesson < lessonSections.length) {
+						resetCanvas();
+					}
+				}}/>)} 
 		</SafeAreaView>
 	);
 }
