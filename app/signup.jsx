@@ -127,6 +127,17 @@ export default function SignUp() {
                 style={GlobalStyles.signInLogo}
                 resizeMode="contain"
             /> */}
+
+				{emailErrorExists ? (
+					<Text style={{ borderColor: '#c30010' }}>
+						{/*email box*/}
+					</Text>
+				) :
+				<Text style={{ borderColor: '#D1D5DB' }}>
+						{/*email box*/}
+					</Text>
+				}
+
 				<Text style={GlobalStyles.signInHeading}>
 					Create your account
 				</Text>
