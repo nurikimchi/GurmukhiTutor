@@ -146,6 +146,9 @@ export const GlobalStyles = StyleSheet.create(
       paddingVertical: 6, // py-1.5
       alignItems: 'center',
       justifyContent: 'center',
+      position: 'absolute',
+      bottom:'0px',
+      width:'100%'
     },
     lessonButtonContent: {
       flexDirection: 'row', 

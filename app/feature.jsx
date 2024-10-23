@@ -734,7 +734,7 @@ export default function Feature() {
 			
 		}
 	]
-		const [currRomanization, setCurrRomanization] = React.useState("t")
+		const [currRomanization, setCurrRomanization] = React.useState(letterMap[0].romanization)
     const [ableToDraw, setAbleToDraw] = React.useState(true)
     
     const [completeButton, setCompleteButton] = React.useState(false)
