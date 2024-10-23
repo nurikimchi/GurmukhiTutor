@@ -655,6 +655,16 @@ export default function Feature() {
 		})
 		return total;
 	}
+	function findRomanization(letter) {
+		console.log("check here:", letterMap)
+		letterMap.forEach((indivLetter)=>{
+			console.log("indivLetter", indivLetter)
+			if (indivLetter.character==letter) {
+				console.log('I am returned')
+				setCurrRomanization(indivLetter.romanization);
+			}
+		})
+	}
 	function euclideanDistance(p1, p2) {
 		return sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2));
 	}
@@ -724,6 +734,7 @@ export default function Feature() {
 			
 		}
 	]
+		const [currRomanization, setCurrRomanization] = React.useState("t")
     const [ableToDraw, setAbleToDraw] = React.useState(true)
     
     const [completeButton, setCompleteButton] = React.useState(false)
@@ -902,7 +913,8 @@ export default function Feature() {
         }
     }, [globalCounter]);
 	React.useEffect(()=>{
-		playPronunciationAudio(currentAudio)
+		playPronunciationAudio(currentAudio);
+		findRomanization(itemLetter);
 	}, [])
 	// Idea, have user's lvl. 4 unstenciled drawing replace the SVG to mark completion
 
@@ -921,11 +933,11 @@ export default function Feature() {
 				{lessonSections[currLesson]&&lessonSections[currLesson].renderLesson()}
 
 
-				<View style={{
+					<View style={{
 						display:'flex',
 						alignItems: 'center'
 					}}>
-					<Text style={GlobalStyles.romanizationText}>Romanization Here</Text>
+					<Text style={GlobalStyles.romanizationText}>{currRomanization}</Text>
 					</View>
 				</View>
 			<View style={GlobalStyles.audioIconDiv} onClick={()=>{

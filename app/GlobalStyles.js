@@ -488,12 +488,12 @@ export const GlobalStyles = StyleSheet.create(
       top: '10px'
     },
     romanizationText: {
-      fontSize: "16px",
+      fontSize: "18px",
       fontStyle: 'italic',
       fontFamily: "system-ui",
       color:"#222",
       position: 'absolute',
-      marginTop: '2em',
+      marginTop: '1em',
       whiteSpace: 'nowrap',
     }
   }
