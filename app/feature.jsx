@@ -296,6 +296,148 @@ export default function Feature() {
 		ਵ: coord_ਵ_34,
 		ੜ: coord_ੜ_35,
 	};
+	const letterMap = [
+		{
+			character: 'ੳ',
+			romanization: 'oora',
+		},
+		{
+			character: 'ਅ',
+			romanization: 'airaa(uh)',
+		},
+		{
+			character: 'ੲ',
+			romanization: 'eeree(e)',
+		},
+		{
+			character: 'ਸ',
+			romanization: 'sasa(s)',
+		},
+		{
+			character: 'ਹ',
+			romanization: 'haha(h)',
+		},
+		{
+			character: 'ਕ',
+			romanization: 'kaka(k)',
+		},
+		{
+			character: 'ਖ',
+			romanization: 'khakha(kh)',
+		},
+		{
+			character: 'ਗ',
+			romanization: 'gaga(g)',
+		},
+		{
+			character: 'ਘ',
+			romanization: 'ghagha(gh)',
+		},
+		{
+			character: 'ਙ',
+			romanization: 'nanga(ng)',
+		},
+		{
+			character: 'ਚ',
+			romanization: 'chacha(ch)',
+		},
+		{
+			character: 'ਛ',
+			romanization: 'chhachha(chh)',
+		},
+		{
+			character: 'ਜ',
+			romanization: ' jaja(j)',
+		},
+		{
+			character: 'ਝ',
+			romanization: 'jhajha(jh)',
+		},
+		{
+			character: 'ਞ',
+			romanization: 'nyanya(ny)',
+		},
+		{
+			character: 'ਟ',
+			romanization: 'tainka(t)',
+		},
+		{
+			character: 'ਠ',
+			romanization: 'thatha(th)',
+		},
+		{
+			character: 'ਡ',
+			romanization: 'dada(d)',
+		},
+		{
+			character: 'ਢ',
+			romanization: 'dhadha(dh)',
+		},
+		{
+			character: 'ਣ',
+			romanization: 'nana(N)',
+		},
+		{
+			character: 'ਤ',
+			romanization: 'tata (t)',
+		},
+		{
+			character: 'ਥ',
+			romanization: 'thatha(tha)',
+		},
+		{
+			character: 'ਦ',
+			romanization: 'dada(d)',
+		},
+		{
+			character: 'ਧ',
+			romanization: 'dhadha(dh)',
+		},
+		{
+			character: 'ਨ',
+			romanization: 'nana(n)',
+		},
+		{
+			character: 'ਪ',
+			romanization: 'papa(P)',
+		},
+		{
+			character: 'ਫ',
+			romanization: 'phapha(ph)',
+		},
+		{
+			character: 'ਬ',
+			romanization: 'baba(B)',
+		},
+		{
+			character: 'ਭ',
+			romanization: 'Bhabha(bha)',
+		},
+		{
+			character: 'ਮ',
+			romanization: 'mama(m)',
+		},
+		{
+			character: 'ਯ',
+			romanization: 'yaya(Y)',
+		},
+		{
+			character: 'ਰ',
+			romanization: 'rara(r)',
+		},
+		{
+			character: 'ਲ',
+			romanization: 'lala(l)',
+		},
+		{
+			character: 'ਵ',
+			romanization: 'vavwa(v)',
+		},
+		{
+			character: 'ੜ',
+			romanization: 'rara(R)',
+		},
+	]
   const lessonSections = [
 		{
 			stage: 1,
@@ -487,7 +629,6 @@ export default function Feature() {
 			},
 		},
 	]
-	
 	const canvasRef = useRef(null);
 
 	const params = useLocalSearchParams();
@@ -643,8 +784,8 @@ export default function Feature() {
 	const SVGItem = svgList[itemLetter];
 
 	console.log("itemLetter", itemLetter);
-	//ਗ
-	const [currentAudio, setCurrentAudio] = useState(`../assets/audio/pronunciationAudio/_ਗ_Audio.mp3`)
+	//changes current audio file based on the current letter. Audio files must follow format [letter]_audio
+	const [currentAudio, setCurrentAudio] = useState(`../assets/audio/pronunciationAudio/${itemLetter}_Audio.mp3`);
 	const [FPA, setFPA] = useState(false);
 	const [SPA, setSPA] = useState(false);
 	const [TPA, setTPA] = useState(false);
