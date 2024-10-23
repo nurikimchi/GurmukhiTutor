@@ -642,7 +642,9 @@ export default function Feature() {
 
 	const SVGItem = svgList[itemLetter];
 
-	const [currentAudio, setCurrentAudio] = useState('../assets/audio/audioTest.wav')
+	console.log("itemLetter", itemLetter);
+	//ਗ
+	const [currentAudio, setCurrentAudio] = useState(`../assets/audio/pronunciationAudio/_ਗ_Audio.mp3`)
 	const [FPA, setFPA] = useState(false);
 	const [SPA, setSPA] = useState(false);
 	const [TPA, setTPA] = useState(false);
@@ -665,7 +667,7 @@ export default function Feature() {
 	};
 	const playPronunciationAudio = (audioPath) => {
 		//JUMP: delete comment to unmute
-		//new Audio(audioPath).play();
+		new Audio(audioPath).play();
 	}
 
     const router = useRouter();
