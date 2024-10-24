@@ -47,7 +47,9 @@ export default function SignIn() {
     const handleRedirectSignUp = async (email, password) => {
         router.navigate('/signup');
     }
-      
+    const handleRedirectForgotPassword = async (email, password) => {
+        router.navigate('/forgotpassword');
+    }
     return (
 
         <View style={GlobalStyles.signInContainer}>
@@ -77,7 +79,7 @@ export default function SignIn() {
             <View style={GlobalStyles.signInFormField}> 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                     <Text style={GlobalStyles.signInLabel}>Password</Text>
-                    <Pressable>
+                    <Pressable onPress={handleRedirectForgotPassword}>
                         <Text style={GlobalStyles.signInForgotPasswordLink}>Forgot password?</Text>
                     </Pressable>
                 </View>

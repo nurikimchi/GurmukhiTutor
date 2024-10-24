@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
 import { Text, View, SafeAreaView, Pressable  } from "react-native";
 import { Canvas } from "@benjeau/react-native-draw";
-
+import { GlobalStyles } from "./GlobalStyles";
 import LessonButton from '../components/LessonButton.tsx'
+import { Screen } from '@react-navigation/native';
 
 import Design_ੳ_1 from "../constants/data/Design_ੳ_1.tsx";
 import { coord_ੳ_1 } from "../constants/data/coord_ੳ_1.js";
@@ -148,7 +149,6 @@ import Design_ੜ_35 from "../constants/data/Design_ੜ_35.tsx";
 
 ]
 */
-
 import * as Progress from "react-native-progress";
 
 import "react-native-gesture-handler";
@@ -296,7 +296,339 @@ export default function Feature() {
 		ਵ: coord_ਵ_34,
 		ੜ: coord_ੜ_35,
 	};
-    
+	const letterMap = [
+		{
+			character: 'ੳ',
+			romanization: 'oora',
+		},
+		{
+			character: 'ਅ',
+			romanization: 'airaa(uh)',
+		},
+		{
+			character: 'ੲ',
+			romanization: 'eeree(e)',
+		},
+		{
+			character: 'ਸ',
+			romanization: 'sasa(s)',
+		},
+		{
+			character: 'ਹ',
+			romanization: 'haha(h)',
+		},
+		{
+			character: 'ਕ',
+			romanization: 'kaka(k)',
+		},
+		{
+			character: 'ਖ',
+			romanization: 'khakha(kh)',
+		},
+		{
+			character: 'ਗ',
+			romanization: 'gaga(g)',
+		},
+		{
+			character: 'ਘ',
+			romanization: 'ghagha(gh)',
+		},
+		{
+			character: 'ਙ',
+			romanization: 'nanga(ng)',
+		},
+		{
+			character: 'ਚ',
+			romanization: 'chacha(ch)',
+		},
+		{
+			character: 'ਛ',
+			romanization: 'chhachha(chh)',
+		},
+		{
+			character: 'ਜ',
+			romanization: ' jaja(j)',
+		},
+		{
+			character: 'ਝ',
+			romanization: 'jhajha(jh)',
+		},
+		{
+			character: 'ਞ',
+			romanization: 'nyanya(ny)',
+		},
+		{
+			character: 'ਟ',
+			romanization: 'tainka(t)',
+		},
+		{
+			character: 'ਠ',
+			romanization: 'thatha(th)',
+		},
+		{
+			character: 'ਡ',
+			romanization: 'dada(d)',
+		},
+		{
+			character: 'ਢ',
+			romanization: 'dhadha(dh)',
+		},
+		{
+			character: 'ਣ',
+			romanization: 'nana(N)',
+		},
+		{
+			character: 'ਤ',
+			romanization: 'tata (t)',
+		},
+		{
+			character: 'ਥ',
+			romanization: 'thatha(tha)',
+		},
+		{
+			character: 'ਦ',
+			romanization: 'dada(d)',
+		},
+		{
+			character: 'ਧ',
+			romanization: 'dhadha(dh)',
+		},
+		{
+			character: 'ਨ',
+			romanization: 'nana(n)',
+		},
+		{
+			character: 'ਪ',
+			romanization: 'papa(P)',
+		},
+		{
+			character: 'ਫ',
+			romanization: 'phapha(ph)',
+		},
+		{
+			character: 'ਬ',
+			romanization: 'baba(B)',
+		},
+		{
+			character: 'ਭ',
+			romanization: 'Bhabha(bha)',
+		},
+		{
+			character: 'ਮ',
+			romanization: 'mama(m)',
+		},
+		{
+			character: 'ਯ',
+			romanization: 'yaya(Y)',
+		},
+		{
+			character: 'ਰ',
+			romanization: 'rara(r)',
+		},
+		{
+			character: 'ਲ',
+			romanization: 'lala(l)',
+		},
+		{
+			character: 'ਵ',
+			romanization: 'vavwa(v)',
+		},
+		{
+			character: 'ੜ',
+			romanization: 'rara(R)',
+		},
+	]
+  const lessonSections = [
+		{
+			stage: 1,
+			section: 1,
+			renderLesson: function() {
+				return (<><View style={{ zIndex: 2, position: "absolute" }}>
+					<SVGItem
+						visible={true}
+						firstPathAssist={FPA}
+						secondPathAssist={SPA}
+						thirdPathAssist={TPA}
+						fourthPathAssist={FoPA}
+					/>
+				</View>
+				<Pressable
+					style={{ backgroundColor: "transparent", zIndex: 5 }}
+					onPressIn={() => pauseAllAnimation()}
+					onPressOut={() => handleGetPath()}
+				>
+				<Canvas
+					ref={canvasRef}
+					height={100}
+					width={100}
+					style={{
+						backgroundColor: "transparent",
+						position: "relative",
+						zIndex: 3,
+					}}
+					zIndex={100}
+          enabled={ableToDraw}
+				/>
+				</Pressable></>)
+			},
+		},
+		{
+			stage: 1,
+			section: 2,
+			renderLesson: function() {
+				return (<><View style={{ zIndex: 2, position: "absolute" }}>
+					<SVGItem
+						visible={true}
+						firstPathAssist={FPA}
+						secondPathAssist={SPA}
+						thirdPathAssist={TPA}
+						fourthPathAssist={FoPA}
+					/>
+				</View>
+				<Pressable
+					style={{ backgroundColor: "transparent", zIndex: 5 }}
+					onPressIn={() => pauseAllAnimation()}
+					onPressOut={() => handleGetPath()}
+				>
+				<Canvas
+					ref={canvasRef}
+					height={100}
+					width={100}
+					style={{
+						backgroundColor: "transparent",
+						position: "relative",
+						zIndex: 3,
+					}}
+					zIndex={100}
+          enabled={ableToDraw}
+				/>
+				</Pressable></>)
+			},
+		},
+		{
+			stage: 1,
+			section: 3,
+			renderLesson: function() {
+				return (<><View style={{ zIndex: 2, position: "absolute" }}>
+					<SVGItem
+						visible={true}
+						firstPathAssist={FPA}
+						secondPathAssist={SPA}
+						thirdPathAssist={TPA}
+						fourthPathAssist={FoPA}
+					/>
+				</View>
+				<Pressable
+					style={{ backgroundColor: "transparent", zIndex: 5 }}
+					onPressIn={() => pauseAllAnimation()}
+					onPressOut={() => handleGetPath()}
+				>
+				<Canvas
+					ref={canvasRef}
+					height={100}
+					width={100}
+					style={{
+						backgroundColor: "transparent",
+						position: "relative",
+						zIndex: 3,
+					}}
+					zIndex={100}
+          enabled={ableToDraw}
+				/>
+				</Pressable></>)
+			},
+		},
+		{
+			stage: 2,
+			section: 4,
+			renderLesson: function() {
+				return (<><View style={{ zIndex: 2, position: "absolute" }}>
+					<SVGItem
+						visible={true}
+						
+					/>
+				</View>
+				<Pressable
+					style={{ backgroundColor: "transparent", zIndex: 5 }}
+					onPressIn={() => pauseAllAnimation()}
+					onPressOut={() => handleGetPath()}
+				>
+				<Canvas
+					ref={canvasRef}
+					height={100}
+					width={100}
+					style={{
+						backgroundColor: "transparent",
+						position: "relative",
+						zIndex: 3,
+					}}
+					zIndex={100}
+          enabled={ableToDraw}
+				/>
+				</Pressable></>)
+			},
+		},
+		{
+			stage: 2,
+			section: 5,
+			renderLesson: function() {
+				return (<><View style={{ zIndex: 2, position: "absolute" }}>
+					<SVGItem
+						visible={true}
+						
+					/>
+				</View>
+				<Pressable
+					style={{ backgroundColor: "transparent", zIndex: 5 }}
+					onPressIn={() => pauseAllAnimation()}
+					onPressOut={() => handleGetPath()}
+				>
+				<Canvas
+					ref={canvasRef}
+					height={100}
+					width={100}
+					style={{
+						backgroundColor: "transparent",
+						position: "relative",
+						zIndex: 3,
+					}}
+					zIndex={100}
+          enabled={ableToDraw}
+				/>
+				</Pressable></>)
+			},
+		},
+		{
+			stage: 2,
+			section: 6,
+			renderLesson: function() {
+				return (<><View style={{ zIndex: 2, position: "absolute" }}>
+					<SVGItem
+						visible={true}
+						
+					/>
+				</View>
+				<Pressable
+					style={{ backgroundColor: "transparent", zIndex: 5 }}
+					onPressIn={() => pauseAllAnimation()}
+					onPressOut={() => handleGetPath()}
+				>
+				<Canvas
+					ref={canvasRef}
+					height={100}
+					width={100}
+					style={{
+						backgroundColor: "transparent",
+						position: "relative",
+						zIndex: 3,
+					}}
+					zIndex={100}
+          enabled={ableToDraw}
+				/>
+				</Pressable></>)
+			},
+		},
+	]
 	const canvasRef = useRef(null);
 
 	const params = useLocalSearchParams();
@@ -310,7 +642,29 @@ export default function Feature() {
 	const { sqrt, pow } = Math;
 
 	const { itemLetter } = useLocalSearchParams();
-
+	function calcXPGained() {
+		let total = 0;
+		lessonSections.forEach((section)=>{
+			if (section.stage == 1) {
+				total+=5;
+			} else if (section.stage == 2) {
+				total+=10;
+			} else if (section.stage == 3) {
+				total+=15;
+			}
+		})
+		return total;
+	}
+	function findRomanization(letter) {
+		console.log("check here:", letterMap)
+		letterMap.forEach((indivLetter)=>{
+			console.log("indivLetter", indivLetter)
+			if (indivLetter.character==letter) {
+				console.log('I am returned')
+				setCurrRomanization(indivLetter.romanization);
+			}
+		})
+	}
 	function euclideanDistance(p1, p2) {
 		return sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2));
 	}
@@ -329,7 +683,12 @@ export default function Feature() {
 		});
 		return points;
 	}
-
+	function resetCanvas() {
+		setGlobalCounter(0);
+		canvasRef.current.clear();
+		setCompleteButton(false)
+		setCurrLesson(currLesson+1);
+	}
 	function compareSvgPaths(path1, path2) {
 		const commands1 = parseSvgPath(path1);
 		const commands2 = parseSvgPath(path2);
@@ -364,15 +723,25 @@ export default function Feature() {
 	}
 
 	const [globalCounter, setGlobalCounter] = React.useState(0);
-
+	const [currSection, setCurrSection] = React.useState(0); 
 	const [status, setStatus] = React.useState("");
-
+	const [currLesson, setCurrLesson] = React.useState(0);
+	const sections = [
+		{
+			 
+		},
+		{
+			
+		}
+	]
+		const [currRomanization, setCurrRomanization] = React.useState(letterMap[0].romanization)
     const [ableToDraw, setAbleToDraw] = React.useState(true)
     
     const [completeButton, setCompleteButton] = React.useState(false)
 
     const itemLetter_Coord = coordMap[itemLetter];
 
+		//manages pen and activate
 	const handleGetPath = () => {
         console.log("itemLetter_Coord:", itemLetter_Coord);
         console.log("Type of itemLetter_Coord:", typeof itemLetter_Coord);
@@ -425,6 +794,9 @@ export default function Feature() {
 
 	const SVGItem = svgList[itemLetter];
 
+	console.log("itemLetter", itemLetter);
+	//changes current audio file based on the current letter. Audio files must follow format [letter]_audio
+	const [currentAudio, setCurrentAudio] = useState(`../assets/audio/pronunciationAudio/${itemLetter}_Audio.mp3`);
 	const [FPA, setFPA] = useState(false);
 	const [SPA, setSPA] = useState(false);
 	const [TPA, setTPA] = useState(false);
@@ -445,15 +817,18 @@ export default function Feature() {
 		setTPA(false);
 		setFoPA(false);
 	};
+	const playPronunciationAudio = (audioPath) => {
+		//JUMP: delete comment to unmute
+		new Audio(audioPath).play();
+	}
 
     const router = useRouter();
 
     const handleCollectEXP = async(amount) => {
-        console.log("@handleCollectEXP")
         try {
             const docRef = doc(db, "users", currentUser.uid);
-            const docSnap = getDoc(docRef);
-
+            const docSnap = await getDoc(docRef);
+						let data = docSnap.data();
             getDoc(doc(db, "users", currentUser.uid)).then((docSnap) => {
                 const currentData = docSnap.data();
           
@@ -464,7 +839,7 @@ export default function Feature() {
                 updateDoc(docRef, {
                   exp: newEXP,
                 });
-
+								data.xp = newEXP;
                 const completedLevels = currentData.completedLevels;
 
                 const justCompletedLevel = completedLevels.findIndex(level => level.hasOwnProperty(itemLetter));
@@ -481,6 +856,7 @@ export default function Feature() {
 
                 // todo later, connect exp to a ui state that passes back up to Cards.jsx
                 console.log(`Updated experience to ${newEXP}`)
+								console.log(data.xp)
             });
 
             router.navigate('/')
@@ -501,7 +877,6 @@ export default function Feature() {
     // }, [])
     React.useEffect(() => {
         console.log("useEffect, ", globalCounter);
-    
         switch (globalCounter) {
             case 0:
                 setFPA(prev => {
@@ -537,7 +912,10 @@ export default function Feature() {
                 setFoPA(false);
         }
     }, [globalCounter]);
-
+	React.useEffect(()=>{
+		playPronunciationAudio(currentAudio);
+		findRomanization(itemLetter);
+	}, [])
 	// Idea, have user's lvl. 4 unstenciled drawing replace the SVG to mark completion
 
 	return (
@@ -552,38 +930,35 @@ export default function Feature() {
 					height: "100%",
 				}}
 			>
-				<View style={{ zIndex: 2, position: "absolute" }}>
-					<SVGItem
-						visible={true}
-						firstPathAssist={FPA}
-						secondPathAssist={SPA}
-						thirdPathAssist={TPA}
-						fourthPathAssist={FoPA}
-					/>
-				</View>
+				{lessonSections[currLesson]&&lessonSections[currLesson].renderLesson()}
 
-				<Pressable
-					style={{ backgroundColor: "transparent", zIndex: 5 }}
-					onPressIn={() => pauseAllAnimation()}
-					onPressOut={() => handleGetPath()}
-				>
-					<Canvas
-						ref={canvasRef}
-						height={100}
-						width={100}
-						style={{
-							backgroundColor: "transparent",
-							position: "relative",
-							zIndex: 3,
-						}}
-						zIndex={100}
-                        enabled={ableToDraw}
-					/>
-				</Pressable>
+
+					<View style={{
+						display:'flex',
+						alignItems: 'center'
+					}}>
+					<Text style={GlobalStyles.romanizationText}>{currRomanization}</Text>
+					</View>
+				</View>
+			<View style={GlobalStyles.audioIconDiv} onClick={()=>{
+				playPronunciationAudio(currentAudio)
+
+			}}>
+			<svg style={GlobalStyles.audioIcon} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+			</svg>				
 			</View>
-			{/* {globalCounter >= ਕ.length ? <></> : <Button title="Get Path" onPress={handleGetPath} />} */}
-            {completeButton && <LessonButton text="Collect 10 EXP" onPress={() => handleCollectEXP(10)}/>}
-            
+			{
+			}
+        {
+				completeButton && (<LessonButton text={currLesson == lessonSections.length-1?`Collect ${calcXPGained()} EXP`:"Continue"} onPress={() => {
+					if (currLesson == lessonSections.length-1) {
+						handleCollectEXP(calcXPGained)
+					}
+					else if (currLesson < lessonSections.length) {
+						resetCanvas();
+					}
+				}}/>)} 
 		</SafeAreaView>
 	);
 }

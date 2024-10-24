@@ -146,6 +146,9 @@ export const GlobalStyles = StyleSheet.create(
       paddingVertical: 6, // py-1.5
       alignItems: 'center',
       justifyContent: 'center',
+      position: 'absolute',
+      bottom:'0px',
+      width:'100%'
     },
     lessonButtonContent: {
       flexDirection: 'row', 
@@ -202,6 +205,13 @@ export const GlobalStyles = StyleSheet.create(
       fontSize: 14,
       fontWeight: '500',
       lineHeight: 24,
+      color: '#1F2937', // text-gray-900
+    },
+    confirmationText: {
+      fontSize: 20,
+      fontWeight: '700',
+      lineHeight: 24,
+      marginBottom: 10,
       color: '#1F2937', // text-gray-900
     },
     signInInput: {
@@ -471,6 +481,23 @@ export const GlobalStyles = StyleSheet.create(
       paddingHorizontal: 24,
       borderRadius: 4,
       width: '70%'
+    },
+    audioIcon: {
+      width: "35px",
+    },
+    audioIconDiv: {
+      position: 'absolute',
+      right: '10px',
+      top: '10px'
+    },
+    romanizationText: {
+      fontSize: "18px",
+      fontStyle: 'italic',
+      fontFamily: "system-ui",
+      color:"#222",
+      position: 'absolute',
+      marginTop: '1em',
+      whiteSpace: 'nowrap',
     }
   }
 )

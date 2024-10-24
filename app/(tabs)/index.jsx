@@ -7,7 +7,7 @@ import { GlobalStyles } from '../GlobalStyles'
 
 import { db } from '../../firebaseConfig'
 import { getAuth } from 'firebase/auth'
-import { doc, getDoc } from 'firebase/firestore'
+import { doc, getDoc, onSnapshot } from 'firebase/firestore'
 
 import { useRouter, useSegments, Slot } from "expo-router";
 
@@ -34,13 +34,23 @@ export default function Index(){
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const docRef = doc(db, "users", currentUser.uid);
-        const docSnap = await getDoc(docRef);
-  
+        let docRef = doc(db, "users", currentUser.uid);
+        let docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          const data = docSnap.data();
+          let data = docSnap.data();
           setStatsMain(data);
           console.log("statsMainData: ", data);
+          //listen for changes in the database and update xp card realtime after a xp is collected
+          onSnapshot(doc(db, 'users', currentUser.uid), async (doc) => {
+            docSnap = await getDoc(docRef);
+            data = docSnap.data();
+            setStatsMain(data);
+            setStats([
+              { name: 'Lessons completed', stat: completedLevels_String, cta: '' },
+              { name: 'Leaderboard standing', stat: data.ranking, cta: 'View leaderboard' },
+              { name: 'Experience level', stat: data.exp, cta: '' },
+            ]);
+          });
 
           const completedLevels = (completedLevels_DB) => {
             const filteredLevels = completedLevels_DB.filter((obj) =>
@@ -105,8 +115,7 @@ export default function Index(){
           </View>
           </View>
         </View>
-        <Cards />
-
+        <Cards/>
       </SafeAreaView>
     </ScrollView>
   )
