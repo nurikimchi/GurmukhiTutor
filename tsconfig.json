@@ -18,6 +18,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts", "app/(tabs)/profile.jsx", "app/(tabs)/index.jsx", "app/Cards.jsx",
+    "expo-env.d.ts", "app/(tabs)/profile.jsx", "app/(tabs)/index.jsx", "app/Cards.jsx", "constants/index.js",
   ]
 }
