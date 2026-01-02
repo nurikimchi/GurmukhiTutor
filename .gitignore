@@ -11,4 +11,4 @@ expo-env.d.ts
 
 # secret
 certs/
-firebaseConfig.js
+.env
