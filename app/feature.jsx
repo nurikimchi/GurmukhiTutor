@@ -25,7 +25,7 @@ import {
 
 import { useRouter } from "expo-router";
 
-import { PunjabiAlphabet } from "../constants/data";
+import { PunjabiAlphabet } from "../constants/index.js";
 
 export default function Feature() {
 	const { itemLetter } = useLocalSearchParams();
